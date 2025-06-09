@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Refrigeração Vila Velha | Assistência Técnica Comercial e Industrial
+    </title>
+    <meta
+      name="description"
+      content="Especialistas em refrigeração comercial e industrial em Vila Velha. Atendimento rápido, técnicos certificados e garantia em todos os serviços."
+    />
+    <meta
+      name="keywords"
+      content="refrigeração, manutenção, assistência técnica, câmaras frias, expositores, geladeiras, Vila Velha, industrial, comercial"
+    />
+    <meta name="author" content="Tais Defante" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        background-color: #023e8a;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+      header img {
+        height: 50px;
+      }
+      .header-whatsapp {
+        color: white;
+        font-size: 28px;
+        text-decoration: none;
+        animation: pulse-animation 2s infinite;
+      }
+      section {
+        padding: 60px 20px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+      }
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hero {
+        background-image: url("img/hero.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center bottom;
+        background-color: #001f3f;
+        color: white;
+        padding: 160px 20px 300px;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .hero > div {
+        position: relative;
+        z-index: 1;
+      }
+      .section-red {
+        background-color: #0077b6;
+        color: white;
+        text-align: center;
+      }
+      .section-white {
+        background-color: #ffffff;
+        text-align: center;
+      }
+      .button {
+        background-color: #0096c7;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        animation: pulse-animation 1.8s infinite;
+      }
+      @keyframes pulse-animation {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 150, 199, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(0, 150, 199, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 150, 199, 0);
+        }
+      }
+      .carousel-container {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        scroll-snap-type: x mandatory;
+      }
+      .carousel-container::-webkit-scrollbar {
+        display: none;
+      }
+      .service-box {
+        flex: 0 0 100%;
+        max-width: 100%;
+        scroll-snap-align: center;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        .service-box {
+          flex: 0 0 300px;
+          max-width: 300px;
+        }
+      }
+      .faq {
+        max-width: 800px;
+        margin: auto;
+        text-align: left;
+      }
+      .faq-item {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .faq-question {
+        background: #e6f0fb;
+        color: #023e8a;
+        cursor: pointer;
+        padding: 15px;
+        font-weight: bold;
+      }
+      .faq-answer {
+        display: none;
+        background: #ffffff;
+        padding: 15px;
+      }
+      .faq-item.active .faq-answer {
+        display: block;
+      }
+      footer {
+        background-color: #023e8a;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      footer a {
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      #whatsapp-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: transparent;
+        color: #25d366;
+        font-size: 28px;
+        text-align: center;
+        z-index: 1000;
+        text-decoration: none;
+        animation: pulse-animation 2s infinite;
+      }
+
+      /* MODAL */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 90%;
+        color: #000;
+        position: relative;
+      }
+      .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="img/logo2.png" alt="Logo Refrigeração Vila Velha" />
+      <a
+        href="https://wa.me/552799507837"
+        target="_blank"
+        class="header-whatsapp"
+        title="WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p style="font-size: 1.2rem">Refrigeração Comercial e Industrial</p>
+        <h1 style="font-size: 2.5rem; font-weight: 700">
+          Manutenção e Assistência Técnica Especializada
+        </h1>
+        <p style="font-size: 1rem; max-width: 700px; margin: 0 auto">
+          Atendimento rápido, técnicos certificados e equipamentos sempre
+          funcionando com eficiência. Garantia em todos os serviços.
+        </p>
+        <a href="#formulario" class="button">Solicitar Orçamento</a>
+      </div>
+    </section>
+
+    <section id="servicos" class="section-white">
+      <h2 style="color: #023e8a">Especialidades em Refrigeração</h2>
+      <div class="carousel-container">
+        <div class="service-box">
+          <img
+            src="img/comercial.png"
+            alt="Expositores Comerciais"
+            style="width: 100px; margin-bottom: 10px"
+          />
+          <h3>Expositores Comerciais</h3>
+          <p>
+            Manutenção preventiva e corretiva em expositores verticais e
+            horizontais.
+          </p>
+        </div>
+        <div class="service-box">
+          <img
+            src="img/geladeira.png"
+            alt="Geladeiras e Freezers"
+            style="width: 100px; margin-bottom: 10px"
+          />
+          <h3>Geladeiras e Freezers</h3>
+          <p>Reparo em refrigeradores residenciais e industriais.</p>
+        </div>
+        <div class="service-box">
+          <img
+            src="3.png"
+            alt="Câmaras Frias"
+            style="width: 100px; margin-bottom: 10px"
+          />
+          <h3>Câmaras Frias</h3>
+          <p>
+            Montagem e manutenção de câmaras frias e unidades condensadoras.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      style="
+        background-color: #001f3f;
+        padding: 60px 0;
+        color: white;
+        text-align: center;
+      "
+    >
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: #00b4d8">
+        Equipamentos Atendidos
+      </h2>
+      <img
+        src="img/1.png"
+        alt="Equipamentos de Refrigeração"
+        style="width: 100%; max-height: 500px; object-fit: cover"
+      />
+      <div style="max-width: 800px; margin: 30px auto 0; padding: 0 20px">
+        <p style="font-size: 1.1rem; line-height: 1.6">
+          Atuamos com assistência técnica completa em refrigeradores comerciais,
+          freezers, vitrines, câmaras frias, expositores de bebidas e
+          laticínios, máquinas de gelo e outros sistemas de refrigeração
+          industrial.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-white">
+      <h2 style="color: #023e8a">Diferenciais</h2>
+      <ul
+        style="
+          list-style: none;
+          padding: 0;
+          max-width: 600px;
+          margin: auto;
+          text-align: left;
+          font-size: 1rem;
+          line-height: 2;
+        "
+      >
+        <li>✔️ Atendimento rápido e no mesmo dia (quando possível)</li>
+        <li>✔️ Técnicos certificados e uniformizados</li>
+        <li>✔️ Garantia no serviço prestado</li>
+        <li>✔️ Preço justo com qualidade premium</li>
+      </ul>
+    </section>
+
+    <section class="section-red">
+      <h2>Fale com a gente agora mesmo!</h2>
+      <p>
+        Agende seu atendimento com um de nossos especialistas ou ligue agora.
+      </p>
+      <a href="https://wa.me/55279999837" class="button">Agendar Atendimento</a>
+      <a href="tel:+55279999837" class="button" style="margin-left: 10px"
+        >Ligar Agora</a
+      >
+    </section>
+
+    <section class="section-white">
+      <h2 style="color: #023e8a">Perguntas Frequentes</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question">⏱️ Qual o tempo de atendimento?</div>
+          <div class="faq-answer">
+            Na maioria dos casos, conseguimos atender no mesmo dia.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            ❄️ Trabalham com refrigeração industrial?
+          </div>
+          <div class="faq-answer">
+            Sim! Cuidamos de expositores, câmaras frias e muito mais.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">🛠️ Oferecem garantia?</div>
+          <div class="faq-answer">Sim, todo serviço tem garantia escrita.</div>
+        </div>
+      </div>
+    </section>
+
+    <a
+      href="https://wa.me/552799507837"
+      target="_blank"
+      id="whatsapp-button"
+      title="Fale conosco no WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+      <span>© 2025 Refrigeração Vila Velha. Todos os direitos reservados.</span>
+      <div>
+        <a onclick="openModal('politica-modal')">Política de Privacidade</a> |
+        <a onclick="openModal('termos-modal')">Termos de Uso</a>
+      </div>
+      <div style="align-self: flex-end; font-size: 12px; margin-top: 10px">
+        Desenvolvido por
+        <a
+          href="https://taisdefantedefan.com.br"
+          target="_blank"
+          style="font-size: 12px"
+          >Tais Defante</a
+        >
+      </div>
+    </footer>
+
+    <!-- MODAL POLÍTICA -->
+    <div id="politica-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('politica-modal')"
+          >&times;</span
+        >
+        <h2>Política de Privacidade</h2>
+        <p>
+          Seus dados são tratados com segurança e utilizados apenas para fins de
+          atendimento e orçamento. Não compartilhamos suas informações com
+          terceiros.
+        </p>
+      </div>
+    </div>
+
+    <!-- MODAL TERMOS -->
+    <div id="termos-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('termos-modal')"
+          >&times;</span
+        >
+        <h2>Termos de Uso</h2>
+        <p>
+          Ao utilizar este site, você concorda com nossos termos de atendimento,
+          garantia e uso responsável das informações fornecidas.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".faq-question").forEach((item) => {
+        item.addEventListener("click", () => {
+          item.parentElement.classList.toggle("active");
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      function openModal(id) {
+        document.getElementById(id).style.display = "flex";
+      }
+      function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+      }
+
+      window.addEventListener("click", function (e) {
+        document.querySelectorAll(".modal-overlay").forEach((modal) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
