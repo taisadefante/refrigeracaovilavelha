@@ -236,6 +236,17 @@
         cursor: pointer;
         color: #333;
       }
+      @media (max-width: 768px) {
+        .contato-responsive {
+          text-align: center;
+        }
+
+        .contato-responsive h3,
+        .contato-responsive p {
+          justify-content: center;
+          text-align: center;
+        }
+      }
     </style>
   </head>
   <body>
@@ -909,7 +920,7 @@
       "
     >
       <!-- Informações de Contato -->
-      <div style="flex: 1 1 400px; min-width: 280px">
+      <div class="contato-responsive" style="flex: 1 1 400px; min-width: 280px">
         <h3 style="color: #003f87; margin-bottom: 10px">Telefone e WhatsApp</h3>
 
         <p style="font-size: 1.1rem; margin: 5px 0">
